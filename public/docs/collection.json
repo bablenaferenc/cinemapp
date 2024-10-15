@@ -1,0 +1,513 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "989ed482-b8c4-4b03-bbd2-f7292d987635",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/movie",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/movie"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "[{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\",\"screening_events\":[{\"id\":12,\"time\":\"2025-01-22 19:57\",\"available_seats\":52,\"movie_id\":1},{\"id\":14,\"time\":\"2025-07-30 03:50\",\"available_seats\":6,\"movie_id\":1},{\"id\":15,\"time\":\"2025-02-22 03:47\",\"available_seats\":33,\"movie_id\":1},{\"id\":16,\"time\":\"2025-04-06 16:24\",\"available_seats\":70,\"movie_id\":1},{\"id\":38,\"time\":\"2025-07-15 21:03\",\"available_seats\":85,\"movie_id\":1}]},{\"id\":2,\"title\":\"Avengers\",\"description\":\"Eligendi dolores labore natus asperiores id repellendus qui. Sit dolores voluptatibus enim repellat aut. Saepe veniam eligendi consequuntur et reiciendis esse eum.\",\"age_restriction\":12,\"language\":\"es\",\"cover_image\":\"\\\/movies\\\/avengers.jpg\",\"screening_events\":[{\"id\":42,\"time\":\"2025-09-03 00:10\",\"available_seats\":45,\"movie_id\":2}]},{\"id\":3,\"title\":\"Back to the Future\",\"description\":\"Sed veritatis similique sapiente non. Error in ullam quia. Laudantium molestiae quibusdam deserunt ullam. Ut nemo non expedita ut est sint possimus.\",\"age_restriction\":2,\"language\":\"lt\",\"cover_image\":\"\\\/movies\\\/back-to-the-future.jpg\",\"screening_events\":[{\"id\":19,\"time\":\"2025-01-21 19:13\",\"available_seats\":11,\"movie_id\":3}]},{\"id\":4,\"title\":\"Cars\",\"description\":\"Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.\",\"age_restriction\":11,\"language\":\"hi\",\"cover_image\":\"\\\/movies\\\/cars.jpg\",\"screening_events\":[{\"id\":8,\"time\":\"2025-06-07 02:15\",\"available_seats\":75,\"movie_id\":4},{\"id\":40,\"time\":\"2024-11-15 06:14\",\"available_seats\":81,\"movie_id\":4},{\"id\":43,\"time\":\"2024-10-19 01:12\",\"available_seats\":87,\"movie_id\":4}]},{\"id\":5,\"title\":\"Forrest Gump\",\"description\":\"Amet ab velit aut minus doloremque repellendus. Autem sunt ullam nemo in qui doloremque. Aut minima quis beatae ex. Sit sit maxime quod et quas fuga.\",\"age_restriction\":3,\"language\":\"kv\",\"cover_image\":\"\\\/movies\\\/forrest-gump.jpg\",\"screening_events\":[]},{\"id\":6,\"title\":\"Ghostbusters\",\"description\":\"Sed tempore eligendi odit quia in enim. Est ex dicta inventore quam. Impedit rerum cum veritatis quaerat molestiae neque. Odio ipsum quaerat quidem alias unde.\",\"age_restriction\":9,\"language\":\"sn\",\"cover_image\":\"\\\/movies\\\/ghostbusters.jpg\",\"screening_events\":[]},{\"id\":7,\"title\":\"Harry Potter\",\"description\":\"Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.\",\"age_restriction\":5,\"language\":\"cr\",\"cover_image\":\"\\\/movies\\\/harry-potter.jpg\",\"screening_events\":[{\"id\":13,\"time\":\"2025-07-05 16:14\",\"available_seats\":6,\"movie_id\":7},{\"id\":18,\"time\":\"2024-11-26 02:34\",\"available_seats\":61,\"movie_id\":7},{\"id\":35,\"time\":\"2025-04-04 11:34\",\"available_seats\":6,\"movie_id\":7},{\"id\":49,\"time\":\"2025-06-22 20:49\",\"available_seats\":7,\"movie_id\":7}]},{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\",\"screening_events\":[{\"id\":1,\"time\":\"2025-06-25 08:43\",\"available_seats\":5,\"movie_id\":8},{\"id\":21,\"time\":\"2025-07-11 20:36\",\"available_seats\":41,\"movie_id\":8},{\"id\":25,\"time\":\"2025-03-03 10:52\",\"available_seats\":48,\"movie_id\":8},{\"id\":41,\"time\":\"2024-11-18 02:06\",\"available_seats\":75,\"movie_id\":8},{\"id\":44,\"time\":\"2025-07-30 15:40\",\"available_seats\":15,\"movie_id\":8},{\"id\":46,\"time\":\"2025-04-23 07:53\",\"available_seats\":46,\"movie_id\":8}]},{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\",\"screening_events\":[{\"id\":3,\"time\":\"2025-03-08 06:06\",\"available_seats\":88,\"movie_id\":9},{\"id\":10,\"time\":\"2024-11-06 08:55\",\"available_seats\":60,\"movie_id\":9},{\"id\":17,\"time\":\"2025-06-25 05:53\",\"available_seats\":42,\"movie_id\":9},{\"id\":20,\"time\":\"2024-11-24 08:38\",\"available_seats\":85,\"movie_id\":9},{\"id\":36,\"time\":\"2025-01-14 12:40\",\"available_seats\":88,\"movie_id\":9},{\"id\":48,\"time\":\"2025-06-29 06:27\",\"available_seats\":87,\"movie_id\":9}]},{\"id\":10,\"title\":\"Joker\",\"description\":\"Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.\",\"age_restriction\":0,\"language\":\"sa\",\"cover_image\":\"\\\/movies\\\/joker.jpg\",\"screening_events\":[{\"id\":7,\"time\":\"2024-11-03 08:23\",\"available_seats\":98,\"movie_id\":10},{\"id\":27,\"time\":\"2025-03-04 10:12\",\"available_seats\":11,\"movie_id\":10},{\"id\":34,\"time\":\"2025-02-14 23:07\",\"available_seats\":29,\"movie_id\":10},{\"id\":50,\"time\":\"2024-12-10 00:02\",\"available_seats\":87,\"movie_id\":10}]},{\"id\":11,\"title\":\"Jumanji\",\"description\":\"Veritatis quis voluptatum culpa temporibus omnis quas voluptatum. Quia non dolorum esse eius assumenda necessitatibus vero. Dolor explicabo facere similique similique.\",\"age_restriction\":6,\"language\":\"ee\",\"cover_image\":\"\\\/movies\\\/jumanji.jpg\",\"screening_events\":[{\"id\":22,\"time\":\"2025-09-04 14:13\",\"available_seats\":31,\"movie_id\":11},{\"id\":39,\"time\":\"2025-09-22 14:35\",\"available_seats\":100,\"movie_id\":11}]},{\"id\":12,\"title\":\"Jurassic Park\",\"description\":\"Suscipit modi sint sint eos porro. Et sed illo natus delectus voluptas. Ut rerum animi magni commodi amet est. Voluptas et non quia recusandae.\",\"age_restriction\":3,\"language\":\"vo\",\"cover_image\":\"\\\/movies\\\/jurassic-park.jpg\",\"screening_events\":[{\"id\":2,\"time\":\"2025-08-12 16:29\",\"available_seats\":67,\"movie_id\":12},{\"id\":28,\"time\":\"2025-10-04 02:02\",\"available_seats\":11,\"movie_id\":12}]},{\"id\":15,\"title\":\"Pulp Fiction\",\"description\":\"Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.\",\"age_restriction\":18,\"language\":\"se\",\"cover_image\":\"\\\/movies\\\/pulp-fiction.jpg\",\"screening_events\":[{\"id\":5,\"time\":\"2025-09-02 23:28\",\"available_seats\":21,\"movie_id\":15},{\"id\":9,\"time\":\"2024-11-17 03:06\",\"available_seats\":46,\"movie_id\":15},{\"id\":37,\"time\":\"2025-09-28 03:00\",\"available_seats\":5,\"movie_id\":15},{\"id\":45,\"time\":\"2024-12-17 00:46\",\"available_seats\":78,\"movie_id\":15}]},{\"id\":16,\"title\":\"Star Wars\",\"description\":\"Dolorum officiis eaque sit. Eum et in et eius alias. Odio provident earum exercitationem rerum eum nihil.\",\"age_restriction\":11,\"language\":\"ch\",\"cover_image\":\"\\\/movies\\\/star-wars.jpg\",\"screening_events\":[{\"id\":29,\"time\":\"2025-09-05 12:11\",\"available_seats\":93,\"movie_id\":16}]},{\"id\":13,\"title\":\"The Lord of the Rings\",\"description\":\"Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.\",\"age_restriction\":18,\"language\":\"na\",\"cover_image\":\"\\\/movies\\\/the-lord-of-the-rings.jpg\",\"screening_events\":[{\"id\":6,\"time\":\"2025-06-09 13:17\",\"available_seats\":45,\"movie_id\":13},{\"id\":23,\"time\":\"2025-04-07 03:48\",\"available_seats\":31,\"movie_id\":13},{\"id\":24,\"time\":\"2024-10-21 07:43\",\"available_seats\":14,\"movie_id\":13},{\"id\":31,\"time\":\"2025-10-07 18:56\",\"available_seats\":3,\"movie_id\":13},{\"id\":32,\"time\":\"2025-03-14 09:19\",\"available_seats\":94,\"movie_id\":13}]},{\"id\":14,\"title\":\"The Matrix\",\"description\":\"Minus exercitationem ut dolorum quisquam. Eum et officiis et quaerat deserunt maiores ut. At vero a modi eligendi enim voluptate.\",\"age_restriction\":12,\"language\":\"gu\",\"cover_image\":\"\\\/movies\\\/the-matrix.jpg\",\"screening_events\":[{\"id\":47,\"time\":\"2025-06-18 00:46\",\"available_seats\":79,\"movie_id\":14}]},{\"id\":17,\"title\":\"The Shining\",\"description\":\"Sit aliquid unde quo aut numquam molestias eos. Omnis et quia ad. Nihil provident delectus laborum enim. Laboriosam impedit quia qui.\",\"age_restriction\":4,\"language\":\"pl\",\"cover_image\":\"\\\/movies\\\/the-shining.jpg\",\"screening_events\":[{\"id\":11,\"time\":\"2025-02-17 18:56\",\"available_seats\":26,\"movie_id\":17}]},{\"id\":18,\"title\":\"Titanic\",\"description\":\"Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.\",\"age_restriction\":10,\"language\":\"zh\",\"cover_image\":\"\\\/movies\\\/titanic.jpg\",\"screening_events\":[{\"id\":4,\"time\":\"2025-03-09 18:56\",\"available_seats\":83,\"movie_id\":18},{\"id\":26,\"time\":\"2025-03-06 09:46\",\"available_seats\":58,\"movie_id\":18},{\"id\":30,\"time\":\"2024-12-05 22:06\",\"available_seats\":100,\"movie_id\":18},{\"id\":33,\"time\":\"2025-07-25 17:36\",\"available_seats\":84,\"movie_id\":18}]}]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/movie",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/movie"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "placeat",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Incidunt vitae explicabo ducimus consequatur est rem qui.",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "age_restriction",
+                                    "value": 15,
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "language",
+                                    "value": "est",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "cover_image",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/movie\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/movie\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the movie."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\",\"screening_events\":[{\"id\":12,\"time\":\"2025-01-22 19:57\",\"available_seats\":52,\"movie_id\":1},{\"id\":14,\"time\":\"2025-07-30 03:50\",\"available_seats\":6,\"movie_id\":1},{\"id\":15,\"time\":\"2025-02-22 03:47\",\"available_seats\":33,\"movie_id\":1},{\"id\":16,\"time\":\"2025-04-06 16:24\",\"available_seats\":70,\"movie_id\":1},{\"id\":38,\"time\":\"2025-07-15 21:03\",\"available_seats\":85,\"movie_id\":1}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/movie\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/movie\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the movie."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "quo",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Dicta aliquam ratione eligendi nemo qui.",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "age_restriction",
+                                    "value": 12,
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "language",
+                                    "value": "et",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "cover_image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PUT",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/movie\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/movie\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the movie."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/screening-event",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/screening-event"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "[{\"id\":43,\"time\":\"2024-10-19 01:12\",\"available_seats\":87,\"movie_id\":4,\"movie\":{\"id\":4,\"title\":\"Cars\",\"description\":\"Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.\",\"age_restriction\":11,\"language\":\"hi\",\"cover_image\":\"\\\/movies\\\/cars.jpg\"}},{\"id\":24,\"time\":\"2024-10-21 07:43\",\"available_seats\":14,\"movie_id\":13,\"movie\":{\"id\":13,\"title\":\"The Lord of the Rings\",\"description\":\"Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.\",\"age_restriction\":18,\"language\":\"na\",\"cover_image\":\"\\\/movies\\\/the-lord-of-the-rings.jpg\"}},{\"id\":7,\"time\":\"2024-11-03 08:23\",\"available_seats\":98,\"movie_id\":10,\"movie\":{\"id\":10,\"title\":\"Joker\",\"description\":\"Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.\",\"age_restriction\":0,\"language\":\"sa\",\"cover_image\":\"\\\/movies\\\/joker.jpg\"}},{\"id\":10,\"time\":\"2024-11-06 08:55\",\"available_seats\":60,\"movie_id\":9,\"movie\":{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\"}},{\"id\":40,\"time\":\"2024-11-15 06:14\",\"available_seats\":81,\"movie_id\":4,\"movie\":{\"id\":4,\"title\":\"Cars\",\"description\":\"Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.\",\"age_restriction\":11,\"language\":\"hi\",\"cover_image\":\"\\\/movies\\\/cars.jpg\"}},{\"id\":9,\"time\":\"2024-11-17 03:06\",\"available_seats\":46,\"movie_id\":15,\"movie\":{\"id\":15,\"title\":\"Pulp Fiction\",\"description\":\"Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.\",\"age_restriction\":18,\"language\":\"se\",\"cover_image\":\"\\\/movies\\\/pulp-fiction.jpg\"}},{\"id\":41,\"time\":\"2024-11-18 02:06\",\"available_seats\":75,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}},{\"id\":20,\"time\":\"2024-11-24 08:38\",\"available_seats\":85,\"movie_id\":9,\"movie\":{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\"}},{\"id\":18,\"time\":\"2024-11-26 02:34\",\"available_seats\":61,\"movie_id\":7,\"movie\":{\"id\":7,\"title\":\"Harry Potter\",\"description\":\"Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.\",\"age_restriction\":5,\"language\":\"cr\",\"cover_image\":\"\\\/movies\\\/harry-potter.jpg\"}},{\"id\":30,\"time\":\"2024-12-05 22:06\",\"available_seats\":100,\"movie_id\":18,\"movie\":{\"id\":18,\"title\":\"Titanic\",\"description\":\"Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.\",\"age_restriction\":10,\"language\":\"zh\",\"cover_image\":\"\\\/movies\\\/titanic.jpg\"}},{\"id\":50,\"time\":\"2024-12-10 00:02\",\"available_seats\":87,\"movie_id\":10,\"movie\":{\"id\":10,\"title\":\"Joker\",\"description\":\"Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.\",\"age_restriction\":0,\"language\":\"sa\",\"cover_image\":\"\\\/movies\\\/joker.jpg\"}},{\"id\":45,\"time\":\"2024-12-17 00:46\",\"available_seats\":78,\"movie_id\":15,\"movie\":{\"id\":15,\"title\":\"Pulp Fiction\",\"description\":\"Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.\",\"age_restriction\":18,\"language\":\"se\",\"cover_image\":\"\\\/movies\\\/pulp-fiction.jpg\"}},{\"id\":36,\"time\":\"2025-01-14 12:40\",\"available_seats\":88,\"movie_id\":9,\"movie\":{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\"}},{\"id\":19,\"time\":\"2025-01-21 19:13\",\"available_seats\":11,\"movie_id\":3,\"movie\":{\"id\":3,\"title\":\"Back to the Future\",\"description\":\"Sed veritatis similique sapiente non. Error in ullam quia. Laudantium molestiae quibusdam deserunt ullam. Ut nemo non expedita ut est sint possimus.\",\"age_restriction\":2,\"language\":\"lt\",\"cover_image\":\"\\\/movies\\\/back-to-the-future.jpg\"}},{\"id\":12,\"time\":\"2025-01-22 19:57\",\"available_seats\":52,\"movie_id\":1,\"movie\":{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\"}},{\"id\":34,\"time\":\"2025-02-14 23:07\",\"available_seats\":29,\"movie_id\":10,\"movie\":{\"id\":10,\"title\":\"Joker\",\"description\":\"Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.\",\"age_restriction\":0,\"language\":\"sa\",\"cover_image\":\"\\\/movies\\\/joker.jpg\"}},{\"id\":11,\"time\":\"2025-02-17 18:56\",\"available_seats\":26,\"movie_id\":17,\"movie\":{\"id\":17,\"title\":\"The Shining\",\"description\":\"Sit aliquid unde quo aut numquam molestias eos. Omnis et quia ad. Nihil provident delectus laborum enim. Laboriosam impedit quia qui.\",\"age_restriction\":4,\"language\":\"pl\",\"cover_image\":\"\\\/movies\\\/the-shining.jpg\"}},{\"id\":15,\"time\":\"2025-02-22 03:47\",\"available_seats\":33,\"movie_id\":1,\"movie\":{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\"}},{\"id\":25,\"time\":\"2025-03-03 10:52\",\"available_seats\":48,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}},{\"id\":27,\"time\":\"2025-03-04 10:12\",\"available_seats\":11,\"movie_id\":10,\"movie\":{\"id\":10,\"title\":\"Joker\",\"description\":\"Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.\",\"age_restriction\":0,\"language\":\"sa\",\"cover_image\":\"\\\/movies\\\/joker.jpg\"}},{\"id\":26,\"time\":\"2025-03-06 09:46\",\"available_seats\":58,\"movie_id\":18,\"movie\":{\"id\":18,\"title\":\"Titanic\",\"description\":\"Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.\",\"age_restriction\":10,\"language\":\"zh\",\"cover_image\":\"\\\/movies\\\/titanic.jpg\"}},{\"id\":3,\"time\":\"2025-03-08 06:06\",\"available_seats\":88,\"movie_id\":9,\"movie\":{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\"}},{\"id\":4,\"time\":\"2025-03-09 18:56\",\"available_seats\":83,\"movie_id\":18,\"movie\":{\"id\":18,\"title\":\"Titanic\",\"description\":\"Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.\",\"age_restriction\":10,\"language\":\"zh\",\"cover_image\":\"\\\/movies\\\/titanic.jpg\"}},{\"id\":32,\"time\":\"2025-03-14 09:19\",\"available_seats\":94,\"movie_id\":13,\"movie\":{\"id\":13,\"title\":\"The Lord of the Rings\",\"description\":\"Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.\",\"age_restriction\":18,\"language\":\"na\",\"cover_image\":\"\\\/movies\\\/the-lord-of-the-rings.jpg\"}},{\"id\":35,\"time\":\"2025-04-04 11:34\",\"available_seats\":6,\"movie_id\":7,\"movie\":{\"id\":7,\"title\":\"Harry Potter\",\"description\":\"Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.\",\"age_restriction\":5,\"language\":\"cr\",\"cover_image\":\"\\\/movies\\\/harry-potter.jpg\"}},{\"id\":16,\"time\":\"2025-04-06 16:24\",\"available_seats\":70,\"movie_id\":1,\"movie\":{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\"}},{\"id\":23,\"time\":\"2025-04-07 03:48\",\"available_seats\":31,\"movie_id\":13,\"movie\":{\"id\":13,\"title\":\"The Lord of the Rings\",\"description\":\"Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.\",\"age_restriction\":18,\"language\":\"na\",\"cover_image\":\"\\\/movies\\\/the-lord-of-the-rings.jpg\"}},{\"id\":46,\"time\":\"2025-04-23 07:53\",\"available_seats\":46,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}},{\"id\":8,\"time\":\"2025-06-07 02:15\",\"available_seats\":75,\"movie_id\":4,\"movie\":{\"id\":4,\"title\":\"Cars\",\"description\":\"Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.\",\"age_restriction\":11,\"language\":\"hi\",\"cover_image\":\"\\\/movies\\\/cars.jpg\"}},{\"id\":6,\"time\":\"2025-06-09 13:17\",\"available_seats\":45,\"movie_id\":13,\"movie\":{\"id\":13,\"title\":\"The Lord of the Rings\",\"description\":\"Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.\",\"age_restriction\":18,\"language\":\"na\",\"cover_image\":\"\\\/movies\\\/the-lord-of-the-rings.jpg\"}},{\"id\":47,\"time\":\"2025-06-18 00:46\",\"available_seats\":79,\"movie_id\":14,\"movie\":{\"id\":14,\"title\":\"The Matrix\",\"description\":\"Minus exercitationem ut dolorum quisquam. Eum et officiis et quaerat deserunt maiores ut. At vero a modi eligendi enim voluptate.\",\"age_restriction\":12,\"language\":\"gu\",\"cover_image\":\"\\\/movies\\\/the-matrix.jpg\"}},{\"id\":49,\"time\":\"2025-06-22 20:49\",\"available_seats\":7,\"movie_id\":7,\"movie\":{\"id\":7,\"title\":\"Harry Potter\",\"description\":\"Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.\",\"age_restriction\":5,\"language\":\"cr\",\"cover_image\":\"\\\/movies\\\/harry-potter.jpg\"}},{\"id\":17,\"time\":\"2025-06-25 05:53\",\"available_seats\":42,\"movie_id\":9,\"movie\":{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\"}},{\"id\":1,\"time\":\"2025-06-25 08:43\",\"available_seats\":5,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}},{\"id\":48,\"time\":\"2025-06-29 06:27\",\"available_seats\":87,\"movie_id\":9,\"movie\":{\"id\":9,\"title\":\"Jaws\",\"description\":\"Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.\",\"age_restriction\":18,\"language\":\"is\",\"cover_image\":\"\\\/movies\\\/jaws.jpg\"}},{\"id\":13,\"time\":\"2025-07-05 16:14\",\"available_seats\":6,\"movie_id\":7,\"movie\":{\"id\":7,\"title\":\"Harry Potter\",\"description\":\"Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.\",\"age_restriction\":5,\"language\":\"cr\",\"cover_image\":\"\\\/movies\\\/harry-potter.jpg\"}},{\"id\":21,\"time\":\"2025-07-11 20:36\",\"available_seats\":41,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}},{\"id\":38,\"time\":\"2025-07-15 21:03\",\"available_seats\":85,\"movie_id\":1,\"movie\":{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\"}},{\"id\":33,\"time\":\"2025-07-25 17:36\",\"available_seats\":84,\"movie_id\":18,\"movie\":{\"id\":18,\"title\":\"Titanic\",\"description\":\"Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.\",\"age_restriction\":10,\"language\":\"zh\",\"cover_image\":\"\\\/movies\\\/titanic.jpg\"}},{\"id\":14,\"time\":\"2025-07-30 03:50\",\"available_seats\":6,\"movie_id\":1,\"movie\":{\"id\":1,\"title\":\"Aladdin\",\"description\":\"Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.\",\"age_restriction\":10,\"language\":\"ar\",\"cover_image\":\"\\\/movies\\\/aladdin.jpg\"}},{\"id\":44,\"time\":\"2025-07-30 15:40\",\"available_seats\":15,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}},{\"id\":2,\"time\":\"2025-08-12 16:29\",\"available_seats\":67,\"movie_id\":12,\"movie\":{\"id\":12,\"title\":\"Jurassic Park\",\"description\":\"Suscipit modi sint sint eos porro. Et sed illo natus delectus voluptas. Ut rerum animi magni commodi amet est. Voluptas et non quia recusandae.\",\"age_restriction\":3,\"language\":\"vo\",\"cover_image\":\"\\\/movies\\\/jurassic-park.jpg\"}},{\"id\":5,\"time\":\"2025-09-02 23:28\",\"available_seats\":21,\"movie_id\":15,\"movie\":{\"id\":15,\"title\":\"Pulp Fiction\",\"description\":\"Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.\",\"age_restriction\":18,\"language\":\"se\",\"cover_image\":\"\\\/movies\\\/pulp-fiction.jpg\"}},{\"id\":42,\"time\":\"2025-09-03 00:10\",\"available_seats\":45,\"movie_id\":2,\"movie\":{\"id\":2,\"title\":\"Avengers\",\"description\":\"Eligendi dolores labore natus asperiores id repellendus qui. Sit dolores voluptatibus enim repellat aut. Saepe veniam eligendi consequuntur et reiciendis esse eum.\",\"age_restriction\":12,\"language\":\"es\",\"cover_image\":\"\\\/movies\\\/avengers.jpg\"}},{\"id\":22,\"time\":\"2025-09-04 14:13\",\"available_seats\":31,\"movie_id\":11,\"movie\":{\"id\":11,\"title\":\"Jumanji\",\"description\":\"Veritatis quis voluptatum culpa temporibus omnis quas voluptatum. Quia non dolorum esse eius assumenda necessitatibus vero. Dolor explicabo facere similique similique.\",\"age_restriction\":6,\"language\":\"ee\",\"cover_image\":\"\\\/movies\\\/jumanji.jpg\"}},{\"id\":29,\"time\":\"2025-09-05 12:11\",\"available_seats\":93,\"movie_id\":16,\"movie\":{\"id\":16,\"title\":\"Star Wars\",\"description\":\"Dolorum officiis eaque sit. Eum et in et eius alias. Odio provident earum exercitationem rerum eum nihil.\",\"age_restriction\":11,\"language\":\"ch\",\"cover_image\":\"\\\/movies\\\/star-wars.jpg\"}},{\"id\":39,\"time\":\"2025-09-22 14:35\",\"available_seats\":100,\"movie_id\":11,\"movie\":{\"id\":11,\"title\":\"Jumanji\",\"description\":\"Veritatis quis voluptatum culpa temporibus omnis quas voluptatum. Quia non dolorum esse eius assumenda necessitatibus vero. Dolor explicabo facere similique similique.\",\"age_restriction\":6,\"language\":\"ee\",\"cover_image\":\"\\\/movies\\\/jumanji.jpg\"}},{\"id\":37,\"time\":\"2025-09-28 03:00\",\"available_seats\":5,\"movie_id\":15,\"movie\":{\"id\":15,\"title\":\"Pulp Fiction\",\"description\":\"Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.\",\"age_restriction\":18,\"language\":\"se\",\"cover_image\":\"\\\/movies\\\/pulp-fiction.jpg\"}},{\"id\":28,\"time\":\"2025-10-04 02:02\",\"available_seats\":11,\"movie_id\":12,\"movie\":{\"id\":12,\"title\":\"Jurassic Park\",\"description\":\"Suscipit modi sint sint eos porro. Et sed illo natus delectus voluptas. Ut rerum animi magni commodi amet est. Voluptas et non quia recusandae.\",\"age_restriction\":3,\"language\":\"vo\",\"cover_image\":\"\\\/movies\\\/jurassic-park.jpg\"}},{\"id\":31,\"time\":\"2025-10-07 18:56\",\"available_seats\":3,\"movie_id\":13,\"movie\":{\"id\":13,\"title\":\"The Lord of the Rings\",\"description\":\"Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.\",\"age_restriction\":18,\"language\":\"na\",\"cover_image\":\"\\\/movies\\\/the-lord-of-the-rings.jpg\"}}]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/screening-event",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/screening-event"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"time\":\"2024-10-15T21:14:49\",\"available_seats\":1,\"movie_id\":7}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/screening-event\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/screening-event\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the screening event."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"id\":1,\"time\":\"2025-06-25 08:43\",\"available_seats\":5,\"movie_id\":8,\"movie\":{\"id\":8,\"title\":\"Interstellar\",\"description\":\"Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.\",\"age_restriction\":4,\"language\":\"wa\",\"cover_image\":\"\\\/movies\\\/interstellar.jpg\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/screening-event\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/screening-event\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the screening event."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"time\":\"2024-10-15T21:14:49\",\"available_seats\":5,\"movie_id\":3}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/screening-event\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/screening-event\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the screening event."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

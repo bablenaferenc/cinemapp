@@ -1,0 +1,2829 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var tryItOutBaseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.37.2.js"></script>
+
+    <script src="../docs/js/theme-default-4.37.2.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-movie">
+                                <a href="#endpoints-GETapi-movie">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-movie">
+                                <a href="#endpoints-POSTapi-movie">Store a newly created resource in storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-movie--id-">
+                                <a href="#endpoints-GETapi-movie--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-movie--id-">
+                                <a href="#endpoints-PUTapi-movie--id-">Update the specified resource in storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-movie--id-">
+                                <a href="#endpoints-DELETEapi-movie--id-">Remove the specified resource from storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-screening-event">
+                                <a href="#endpoints-GETapi-screening-event">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-screening-event">
+                                <a href="#endpoints-POSTapi-screening-event">Store a newly created resource in storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-screening-event--id-">
+                                <a href="#endpoints-GETapi-screening-event--id-">Display the specified resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-screening-event--id-">
+                                <a href="#endpoints-PUTapi-screening-event--id-">Update the specified resource in storage.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-screening-event--id-">
+                                <a href="#endpoints-DELETEapi-screening-event--id-">Remove the specified resource from storage.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: October 15, 2024</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://localhost</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-movie">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-movie">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/movie" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/movie"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-movie">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Aladdin&quot;,
+        &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+        &quot;age_restriction&quot;: 10,
+        &quot;language&quot;: &quot;ar&quot;,
+        &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 12,
+                &quot;time&quot;: &quot;2025-01-22 19:57&quot;,
+                &quot;available_seats&quot;: 52,
+                &quot;movie_id&quot;: 1
+            },
+            {
+                &quot;id&quot;: 14,
+                &quot;time&quot;: &quot;2025-07-30 03:50&quot;,
+                &quot;available_seats&quot;: 6,
+                &quot;movie_id&quot;: 1
+            },
+            {
+                &quot;id&quot;: 15,
+                &quot;time&quot;: &quot;2025-02-22 03:47&quot;,
+                &quot;available_seats&quot;: 33,
+                &quot;movie_id&quot;: 1
+            },
+            {
+                &quot;id&quot;: 16,
+                &quot;time&quot;: &quot;2025-04-06 16:24&quot;,
+                &quot;available_seats&quot;: 70,
+                &quot;movie_id&quot;: 1
+            },
+            {
+                &quot;id&quot;: 38,
+                &quot;time&quot;: &quot;2025-07-15 21:03&quot;,
+                &quot;available_seats&quot;: 85,
+                &quot;movie_id&quot;: 1
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;title&quot;: &quot;Avengers&quot;,
+        &quot;description&quot;: &quot;Eligendi dolores labore natus asperiores id repellendus qui. Sit dolores voluptatibus enim repellat aut. Saepe veniam eligendi consequuntur et reiciendis esse eum.&quot;,
+        &quot;age_restriction&quot;: 12,
+        &quot;language&quot;: &quot;es&quot;,
+        &quot;cover_image&quot;: &quot;/movies/avengers.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 42,
+                &quot;time&quot;: &quot;2025-09-03 00:10&quot;,
+                &quot;available_seats&quot;: 45,
+                &quot;movie_id&quot;: 2
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 3,
+        &quot;title&quot;: &quot;Back to the Future&quot;,
+        &quot;description&quot;: &quot;Sed veritatis similique sapiente non. Error in ullam quia. Laudantium molestiae quibusdam deserunt ullam. Ut nemo non expedita ut est sint possimus.&quot;,
+        &quot;age_restriction&quot;: 2,
+        &quot;language&quot;: &quot;lt&quot;,
+        &quot;cover_image&quot;: &quot;/movies/back-to-the-future.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 19,
+                &quot;time&quot;: &quot;2025-01-21 19:13&quot;,
+                &quot;available_seats&quot;: 11,
+                &quot;movie_id&quot;: 3
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 4,
+        &quot;title&quot;: &quot;Cars&quot;,
+        &quot;description&quot;: &quot;Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.&quot;,
+        &quot;age_restriction&quot;: 11,
+        &quot;language&quot;: &quot;hi&quot;,
+        &quot;cover_image&quot;: &quot;/movies/cars.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 8,
+                &quot;time&quot;: &quot;2025-06-07 02:15&quot;,
+                &quot;available_seats&quot;: 75,
+                &quot;movie_id&quot;: 4
+            },
+            {
+                &quot;id&quot;: 40,
+                &quot;time&quot;: &quot;2024-11-15 06:14&quot;,
+                &quot;available_seats&quot;: 81,
+                &quot;movie_id&quot;: 4
+            },
+            {
+                &quot;id&quot;: 43,
+                &quot;time&quot;: &quot;2024-10-19 01:12&quot;,
+                &quot;available_seats&quot;: 87,
+                &quot;movie_id&quot;: 4
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 5,
+        &quot;title&quot;: &quot;Forrest Gump&quot;,
+        &quot;description&quot;: &quot;Amet ab velit aut minus doloremque repellendus. Autem sunt ullam nemo in qui doloremque. Aut minima quis beatae ex. Sit sit maxime quod et quas fuga.&quot;,
+        &quot;age_restriction&quot;: 3,
+        &quot;language&quot;: &quot;kv&quot;,
+        &quot;cover_image&quot;: &quot;/movies/forrest-gump.jpg&quot;,
+        &quot;screening_events&quot;: []
+    },
+    {
+        &quot;id&quot;: 6,
+        &quot;title&quot;: &quot;Ghostbusters&quot;,
+        &quot;description&quot;: &quot;Sed tempore eligendi odit quia in enim. Est ex dicta inventore quam. Impedit rerum cum veritatis quaerat molestiae neque. Odio ipsum quaerat quidem alias unde.&quot;,
+        &quot;age_restriction&quot;: 9,
+        &quot;language&quot;: &quot;sn&quot;,
+        &quot;cover_image&quot;: &quot;/movies/ghostbusters.jpg&quot;,
+        &quot;screening_events&quot;: []
+    },
+    {
+        &quot;id&quot;: 7,
+        &quot;title&quot;: &quot;Harry Potter&quot;,
+        &quot;description&quot;: &quot;Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.&quot;,
+        &quot;age_restriction&quot;: 5,
+        &quot;language&quot;: &quot;cr&quot;,
+        &quot;cover_image&quot;: &quot;/movies/harry-potter.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 13,
+                &quot;time&quot;: &quot;2025-07-05 16:14&quot;,
+                &quot;available_seats&quot;: 6,
+                &quot;movie_id&quot;: 7
+            },
+            {
+                &quot;id&quot;: 18,
+                &quot;time&quot;: &quot;2024-11-26 02:34&quot;,
+                &quot;available_seats&quot;: 61,
+                &quot;movie_id&quot;: 7
+            },
+            {
+                &quot;id&quot;: 35,
+                &quot;time&quot;: &quot;2025-04-04 11:34&quot;,
+                &quot;available_seats&quot;: 6,
+                &quot;movie_id&quot;: 7
+            },
+            {
+                &quot;id&quot;: 49,
+                &quot;time&quot;: &quot;2025-06-22 20:49&quot;,
+                &quot;available_seats&quot;: 7,
+                &quot;movie_id&quot;: 7
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 8,
+        &quot;title&quot;: &quot;Interstellar&quot;,
+        &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+        &quot;age_restriction&quot;: 4,
+        &quot;language&quot;: &quot;wa&quot;,
+        &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;time&quot;: &quot;2025-06-25 08:43&quot;,
+                &quot;available_seats&quot;: 5,
+                &quot;movie_id&quot;: 8
+            },
+            {
+                &quot;id&quot;: 21,
+                &quot;time&quot;: &quot;2025-07-11 20:36&quot;,
+                &quot;available_seats&quot;: 41,
+                &quot;movie_id&quot;: 8
+            },
+            {
+                &quot;id&quot;: 25,
+                &quot;time&quot;: &quot;2025-03-03 10:52&quot;,
+                &quot;available_seats&quot;: 48,
+                &quot;movie_id&quot;: 8
+            },
+            {
+                &quot;id&quot;: 41,
+                &quot;time&quot;: &quot;2024-11-18 02:06&quot;,
+                &quot;available_seats&quot;: 75,
+                &quot;movie_id&quot;: 8
+            },
+            {
+                &quot;id&quot;: 44,
+                &quot;time&quot;: &quot;2025-07-30 15:40&quot;,
+                &quot;available_seats&quot;: 15,
+                &quot;movie_id&quot;: 8
+            },
+            {
+                &quot;id&quot;: 46,
+                &quot;time&quot;: &quot;2025-04-23 07:53&quot;,
+                &quot;available_seats&quot;: 46,
+                &quot;movie_id&quot;: 8
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 9,
+        &quot;title&quot;: &quot;Jaws&quot;,
+        &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+        &quot;age_restriction&quot;: 18,
+        &quot;language&quot;: &quot;is&quot;,
+        &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 3,
+                &quot;time&quot;: &quot;2025-03-08 06:06&quot;,
+                &quot;available_seats&quot;: 88,
+                &quot;movie_id&quot;: 9
+            },
+            {
+                &quot;id&quot;: 10,
+                &quot;time&quot;: &quot;2024-11-06 08:55&quot;,
+                &quot;available_seats&quot;: 60,
+                &quot;movie_id&quot;: 9
+            },
+            {
+                &quot;id&quot;: 17,
+                &quot;time&quot;: &quot;2025-06-25 05:53&quot;,
+                &quot;available_seats&quot;: 42,
+                &quot;movie_id&quot;: 9
+            },
+            {
+                &quot;id&quot;: 20,
+                &quot;time&quot;: &quot;2024-11-24 08:38&quot;,
+                &quot;available_seats&quot;: 85,
+                &quot;movie_id&quot;: 9
+            },
+            {
+                &quot;id&quot;: 36,
+                &quot;time&quot;: &quot;2025-01-14 12:40&quot;,
+                &quot;available_seats&quot;: 88,
+                &quot;movie_id&quot;: 9
+            },
+            {
+                &quot;id&quot;: 48,
+                &quot;time&quot;: &quot;2025-06-29 06:27&quot;,
+                &quot;available_seats&quot;: 87,
+                &quot;movie_id&quot;: 9
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 10,
+        &quot;title&quot;: &quot;Joker&quot;,
+        &quot;description&quot;: &quot;Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.&quot;,
+        &quot;age_restriction&quot;: 0,
+        &quot;language&quot;: &quot;sa&quot;,
+        &quot;cover_image&quot;: &quot;/movies/joker.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 7,
+                &quot;time&quot;: &quot;2024-11-03 08:23&quot;,
+                &quot;available_seats&quot;: 98,
+                &quot;movie_id&quot;: 10
+            },
+            {
+                &quot;id&quot;: 27,
+                &quot;time&quot;: &quot;2025-03-04 10:12&quot;,
+                &quot;available_seats&quot;: 11,
+                &quot;movie_id&quot;: 10
+            },
+            {
+                &quot;id&quot;: 34,
+                &quot;time&quot;: &quot;2025-02-14 23:07&quot;,
+                &quot;available_seats&quot;: 29,
+                &quot;movie_id&quot;: 10
+            },
+            {
+                &quot;id&quot;: 50,
+                &quot;time&quot;: &quot;2024-12-10 00:02&quot;,
+                &quot;available_seats&quot;: 87,
+                &quot;movie_id&quot;: 10
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 11,
+        &quot;title&quot;: &quot;Jumanji&quot;,
+        &quot;description&quot;: &quot;Veritatis quis voluptatum culpa temporibus omnis quas voluptatum. Quia non dolorum esse eius assumenda necessitatibus vero. Dolor explicabo facere similique similique.&quot;,
+        &quot;age_restriction&quot;: 6,
+        &quot;language&quot;: &quot;ee&quot;,
+        &quot;cover_image&quot;: &quot;/movies/jumanji.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 22,
+                &quot;time&quot;: &quot;2025-09-04 14:13&quot;,
+                &quot;available_seats&quot;: 31,
+                &quot;movie_id&quot;: 11
+            },
+            {
+                &quot;id&quot;: 39,
+                &quot;time&quot;: &quot;2025-09-22 14:35&quot;,
+                &quot;available_seats&quot;: 100,
+                &quot;movie_id&quot;: 11
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 12,
+        &quot;title&quot;: &quot;Jurassic Park&quot;,
+        &quot;description&quot;: &quot;Suscipit modi sint sint eos porro. Et sed illo natus delectus voluptas. Ut rerum animi magni commodi amet est. Voluptas et non quia recusandae.&quot;,
+        &quot;age_restriction&quot;: 3,
+        &quot;language&quot;: &quot;vo&quot;,
+        &quot;cover_image&quot;: &quot;/movies/jurassic-park.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 2,
+                &quot;time&quot;: &quot;2025-08-12 16:29&quot;,
+                &quot;available_seats&quot;: 67,
+                &quot;movie_id&quot;: 12
+            },
+            {
+                &quot;id&quot;: 28,
+                &quot;time&quot;: &quot;2025-10-04 02:02&quot;,
+                &quot;available_seats&quot;: 11,
+                &quot;movie_id&quot;: 12
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 15,
+        &quot;title&quot;: &quot;Pulp Fiction&quot;,
+        &quot;description&quot;: &quot;Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.&quot;,
+        &quot;age_restriction&quot;: 18,
+        &quot;language&quot;: &quot;se&quot;,
+        &quot;cover_image&quot;: &quot;/movies/pulp-fiction.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 5,
+                &quot;time&quot;: &quot;2025-09-02 23:28&quot;,
+                &quot;available_seats&quot;: 21,
+                &quot;movie_id&quot;: 15
+            },
+            {
+                &quot;id&quot;: 9,
+                &quot;time&quot;: &quot;2024-11-17 03:06&quot;,
+                &quot;available_seats&quot;: 46,
+                &quot;movie_id&quot;: 15
+            },
+            {
+                &quot;id&quot;: 37,
+                &quot;time&quot;: &quot;2025-09-28 03:00&quot;,
+                &quot;available_seats&quot;: 5,
+                &quot;movie_id&quot;: 15
+            },
+            {
+                &quot;id&quot;: 45,
+                &quot;time&quot;: &quot;2024-12-17 00:46&quot;,
+                &quot;available_seats&quot;: 78,
+                &quot;movie_id&quot;: 15
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 16,
+        &quot;title&quot;: &quot;Star Wars&quot;,
+        &quot;description&quot;: &quot;Dolorum officiis eaque sit. Eum et in et eius alias. Odio provident earum exercitationem rerum eum nihil.&quot;,
+        &quot;age_restriction&quot;: 11,
+        &quot;language&quot;: &quot;ch&quot;,
+        &quot;cover_image&quot;: &quot;/movies/star-wars.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 29,
+                &quot;time&quot;: &quot;2025-09-05 12:11&quot;,
+                &quot;available_seats&quot;: 93,
+                &quot;movie_id&quot;: 16
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 13,
+        &quot;title&quot;: &quot;The Lord of the Rings&quot;,
+        &quot;description&quot;: &quot;Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.&quot;,
+        &quot;age_restriction&quot;: 18,
+        &quot;language&quot;: &quot;na&quot;,
+        &quot;cover_image&quot;: &quot;/movies/the-lord-of-the-rings.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 6,
+                &quot;time&quot;: &quot;2025-06-09 13:17&quot;,
+                &quot;available_seats&quot;: 45,
+                &quot;movie_id&quot;: 13
+            },
+            {
+                &quot;id&quot;: 23,
+                &quot;time&quot;: &quot;2025-04-07 03:48&quot;,
+                &quot;available_seats&quot;: 31,
+                &quot;movie_id&quot;: 13
+            },
+            {
+                &quot;id&quot;: 24,
+                &quot;time&quot;: &quot;2024-10-21 07:43&quot;,
+                &quot;available_seats&quot;: 14,
+                &quot;movie_id&quot;: 13
+            },
+            {
+                &quot;id&quot;: 31,
+                &quot;time&quot;: &quot;2025-10-07 18:56&quot;,
+                &quot;available_seats&quot;: 3,
+                &quot;movie_id&quot;: 13
+            },
+            {
+                &quot;id&quot;: 32,
+                &quot;time&quot;: &quot;2025-03-14 09:19&quot;,
+                &quot;available_seats&quot;: 94,
+                &quot;movie_id&quot;: 13
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 14,
+        &quot;title&quot;: &quot;The Matrix&quot;,
+        &quot;description&quot;: &quot;Minus exercitationem ut dolorum quisquam. Eum et officiis et quaerat deserunt maiores ut. At vero a modi eligendi enim voluptate.&quot;,
+        &quot;age_restriction&quot;: 12,
+        &quot;language&quot;: &quot;gu&quot;,
+        &quot;cover_image&quot;: &quot;/movies/the-matrix.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 47,
+                &quot;time&quot;: &quot;2025-06-18 00:46&quot;,
+                &quot;available_seats&quot;: 79,
+                &quot;movie_id&quot;: 14
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 17,
+        &quot;title&quot;: &quot;The Shining&quot;,
+        &quot;description&quot;: &quot;Sit aliquid unde quo aut numquam molestias eos. Omnis et quia ad. Nihil provident delectus laborum enim. Laboriosam impedit quia qui.&quot;,
+        &quot;age_restriction&quot;: 4,
+        &quot;language&quot;: &quot;pl&quot;,
+        &quot;cover_image&quot;: &quot;/movies/the-shining.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 11,
+                &quot;time&quot;: &quot;2025-02-17 18:56&quot;,
+                &quot;available_seats&quot;: 26,
+                &quot;movie_id&quot;: 17
+            }
+        ]
+    },
+    {
+        &quot;id&quot;: 18,
+        &quot;title&quot;: &quot;Titanic&quot;,
+        &quot;description&quot;: &quot;Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.&quot;,
+        &quot;age_restriction&quot;: 10,
+        &quot;language&quot;: &quot;zh&quot;,
+        &quot;cover_image&quot;: &quot;/movies/titanic.jpg&quot;,
+        &quot;screening_events&quot;: [
+            {
+                &quot;id&quot;: 4,
+                &quot;time&quot;: &quot;2025-03-09 18:56&quot;,
+                &quot;available_seats&quot;: 83,
+                &quot;movie_id&quot;: 18
+            },
+            {
+                &quot;id&quot;: 26,
+                &quot;time&quot;: &quot;2025-03-06 09:46&quot;,
+                &quot;available_seats&quot;: 58,
+                &quot;movie_id&quot;: 18
+            },
+            {
+                &quot;id&quot;: 30,
+                &quot;time&quot;: &quot;2024-12-05 22:06&quot;,
+                &quot;available_seats&quot;: 100,
+                &quot;movie_id&quot;: 18
+            },
+            {
+                &quot;id&quot;: 33,
+                &quot;time&quot;: &quot;2025-07-25 17:36&quot;,
+                &quot;available_seats&quot;: 84,
+                &quot;movie_id&quot;: 18
+            }
+        ]
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-movie" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-movie"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-movie"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-movie" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-movie">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-movie" data-method="GET"
+      data-path="api/movie"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-movie', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-movie"
+                    onclick="tryItOut('GETapi-movie');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-movie"
+                    onclick="cancelTryOut('GETapi-movie');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-movie"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/movie</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-movie"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-movie"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-movie">Store a newly created resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-movie">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/movie" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "title=placeat"\
+    --form "description=Incidunt vitae explicabo ducimus consequatur est rem qui."\
+    --form "age_restriction=15"\
+    --form "language=est"\
+    --form "cover_image=@/tmp/phpvypzJd" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/movie"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('title', 'placeat');
+body.append('description', 'Incidunt vitae explicabo ducimus consequatur est rem qui.');
+body.append('age_restriction', '15');
+body.append('language', 'est');
+body.append('cover_image', document.querySelector('input[name="cover_image"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-movie">
+</span>
+<span id="execution-results-POSTapi-movie" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-movie"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-movie"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-movie" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-movie">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-movie" data-method="POST"
+      data-path="api/movie"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-movie', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-movie"
+                    onclick="tryItOut('POSTapi-movie');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-movie"
+                    onclick="cancelTryOut('POSTapi-movie');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-movie"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/movie</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-movie"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-movie"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="POSTapi-movie"
+               value="placeat"
+               data-component="body">
+    <br>
+<p>Example: <code>placeat</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-movie"
+               value="Incidunt vitae explicabo ducimus consequatur est rem qui."
+               data-component="body">
+    <br>
+<p>Example: <code>Incidunt vitae explicabo ducimus consequatur est rem qui.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>age_restriction</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="age_restriction"                data-endpoint="POSTapi-movie"
+               value="15"
+               data-component="body">
+    <br>
+<p>Example: <code>15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>language</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="language"                data-endpoint="POSTapi-movie"
+               value="est"
+               data-component="body">
+    <br>
+<p>Example: <code>est</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_image"                data-endpoint="POSTapi-movie"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Example: <code>/tmp/phpvypzJd</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-movie--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-movie--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/movie/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/movie/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-movie--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;Aladdin&quot;,
+    &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+    &quot;age_restriction&quot;: 10,
+    &quot;language&quot;: &quot;ar&quot;,
+    &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;,
+    &quot;screening_events&quot;: [
+        {
+            &quot;id&quot;: 12,
+            &quot;time&quot;: &quot;2025-01-22 19:57&quot;,
+            &quot;available_seats&quot;: 52,
+            &quot;movie_id&quot;: 1
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;time&quot;: &quot;2025-07-30 03:50&quot;,
+            &quot;available_seats&quot;: 6,
+            &quot;movie_id&quot;: 1
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;time&quot;: &quot;2025-02-22 03:47&quot;,
+            &quot;available_seats&quot;: 33,
+            &quot;movie_id&quot;: 1
+        },
+        {
+            &quot;id&quot;: 16,
+            &quot;time&quot;: &quot;2025-04-06 16:24&quot;,
+            &quot;available_seats&quot;: 70,
+            &quot;movie_id&quot;: 1
+        },
+        {
+            &quot;id&quot;: 38,
+            &quot;time&quot;: &quot;2025-07-15 21:03&quot;,
+            &quot;available_seats&quot;: 85,
+            &quot;movie_id&quot;: 1
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-movie--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-movie--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-movie--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-movie--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-movie--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-movie--id-" data-method="GET"
+      data-path="api/movie/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-movie--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-movie--id-"
+                    onclick="tryItOut('GETapi-movie--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-movie--id-"
+                    onclick="cancelTryOut('GETapi-movie--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-movie--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/movie/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-movie--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-movie--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-movie--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the movie. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-movie--id-">Update the specified resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-movie--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/movie/1" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "title=quo"\
+    --form "description=Dicta aliquam ratione eligendi nemo qui."\
+    --form "age_restriction=12"\
+    --form "language=et"\
+    --form "cover_image=@/tmp/phpSLbPdC" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/movie/1"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('title', 'quo');
+body.append('description', 'Dicta aliquam ratione eligendi nemo qui.');
+body.append('age_restriction', '12');
+body.append('language', 'et');
+body.append('cover_image', document.querySelector('input[name="cover_image"]').files[0]);
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-movie--id-">
+</span>
+<span id="execution-results-PUTapi-movie--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-movie--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-movie--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-movie--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-movie--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-movie--id-" data-method="PUT"
+      data-path="api/movie/{id}"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-movie--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-movie--id-"
+                    onclick="tryItOut('PUTapi-movie--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-movie--id-"
+                    onclick="cancelTryOut('PUTapi-movie--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-movie--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/movie/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/movie/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-movie--id-"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-movie--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-movie--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the movie. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-movie--id-"
+               value="quo"
+               data-component="body">
+    <br>
+<p>Example: <code>quo</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-movie--id-"
+               value="Dicta aliquam ratione eligendi nemo qui."
+               data-component="body">
+    <br>
+<p>Example: <code>Dicta aliquam ratione eligendi nemo qui.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>age_restriction</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="age_restriction"                data-endpoint="PUTapi-movie--id-"
+               value="12"
+               data-component="body">
+    <br>
+<p>Example: <code>12</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>language</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="language"                data-endpoint="PUTapi-movie--id-"
+               value="et"
+               data-component="body">
+    <br>
+<p>Example: <code>et</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover_image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover_image"                data-endpoint="PUTapi-movie--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Example: <code>/tmp/phpSLbPdC</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-movie--id-">Remove the specified resource from storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-movie--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/movie/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/movie/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-movie--id-">
+</span>
+<span id="execution-results-DELETEapi-movie--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-movie--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-movie--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-movie--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-movie--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-movie--id-" data-method="DELETE"
+      data-path="api/movie/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-movie--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-movie--id-"
+                    onclick="tryItOut('DELETEapi-movie--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-movie--id-"
+                    onclick="cancelTryOut('DELETEapi-movie--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-movie--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/movie/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-movie--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-movie--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-movie--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the movie. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-screening-event">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-screening-event">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/screening-event" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/screening-event"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-screening-event">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 43,
+        &quot;time&quot;: &quot;2024-10-19 01:12&quot;,
+        &quot;available_seats&quot;: 87,
+        &quot;movie_id&quot;: 4,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 4,
+            &quot;title&quot;: &quot;Cars&quot;,
+            &quot;description&quot;: &quot;Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.&quot;,
+            &quot;age_restriction&quot;: 11,
+            &quot;language&quot;: &quot;hi&quot;,
+            &quot;cover_image&quot;: &quot;/movies/cars.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 24,
+        &quot;time&quot;: &quot;2024-10-21 07:43&quot;,
+        &quot;available_seats&quot;: 14,
+        &quot;movie_id&quot;: 13,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;The Lord of the Rings&quot;,
+            &quot;description&quot;: &quot;Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;na&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-lord-of-the-rings.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 7,
+        &quot;time&quot;: &quot;2024-11-03 08:23&quot;,
+        &quot;available_seats&quot;: 98,
+        &quot;movie_id&quot;: 10,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 10,
+            &quot;title&quot;: &quot;Joker&quot;,
+            &quot;description&quot;: &quot;Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.&quot;,
+            &quot;age_restriction&quot;: 0,
+            &quot;language&quot;: &quot;sa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/joker.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 10,
+        &quot;time&quot;: &quot;2024-11-06 08:55&quot;,
+        &quot;available_seats&quot;: 60,
+        &quot;movie_id&quot;: 9,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;Jaws&quot;,
+            &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;is&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 40,
+        &quot;time&quot;: &quot;2024-11-15 06:14&quot;,
+        &quot;available_seats&quot;: 81,
+        &quot;movie_id&quot;: 4,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 4,
+            &quot;title&quot;: &quot;Cars&quot;,
+            &quot;description&quot;: &quot;Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.&quot;,
+            &quot;age_restriction&quot;: 11,
+            &quot;language&quot;: &quot;hi&quot;,
+            &quot;cover_image&quot;: &quot;/movies/cars.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 9,
+        &quot;time&quot;: &quot;2024-11-17 03:06&quot;,
+        &quot;available_seats&quot;: 46,
+        &quot;movie_id&quot;: 15,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 15,
+            &quot;title&quot;: &quot;Pulp Fiction&quot;,
+            &quot;description&quot;: &quot;Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;se&quot;,
+            &quot;cover_image&quot;: &quot;/movies/pulp-fiction.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 41,
+        &quot;time&quot;: &quot;2024-11-18 02:06&quot;,
+        &quot;available_seats&quot;: 75,
+        &quot;movie_id&quot;: 8,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Interstellar&quot;,
+            &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;wa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 20,
+        &quot;time&quot;: &quot;2024-11-24 08:38&quot;,
+        &quot;available_seats&quot;: 85,
+        &quot;movie_id&quot;: 9,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;Jaws&quot;,
+            &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;is&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 18,
+        &quot;time&quot;: &quot;2024-11-26 02:34&quot;,
+        &quot;available_seats&quot;: 61,
+        &quot;movie_id&quot;: 7,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 7,
+            &quot;title&quot;: &quot;Harry Potter&quot;,
+            &quot;description&quot;: &quot;Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.&quot;,
+            &quot;age_restriction&quot;: 5,
+            &quot;language&quot;: &quot;cr&quot;,
+            &quot;cover_image&quot;: &quot;/movies/harry-potter.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 30,
+        &quot;time&quot;: &quot;2024-12-05 22:06&quot;,
+        &quot;available_seats&quot;: 100,
+        &quot;movie_id&quot;: 18,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 18,
+            &quot;title&quot;: &quot;Titanic&quot;,
+            &quot;description&quot;: &quot;Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;zh&quot;,
+            &quot;cover_image&quot;: &quot;/movies/titanic.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 50,
+        &quot;time&quot;: &quot;2024-12-10 00:02&quot;,
+        &quot;available_seats&quot;: 87,
+        &quot;movie_id&quot;: 10,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 10,
+            &quot;title&quot;: &quot;Joker&quot;,
+            &quot;description&quot;: &quot;Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.&quot;,
+            &quot;age_restriction&quot;: 0,
+            &quot;language&quot;: &quot;sa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/joker.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 45,
+        &quot;time&quot;: &quot;2024-12-17 00:46&quot;,
+        &quot;available_seats&quot;: 78,
+        &quot;movie_id&quot;: 15,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 15,
+            &quot;title&quot;: &quot;Pulp Fiction&quot;,
+            &quot;description&quot;: &quot;Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;se&quot;,
+            &quot;cover_image&quot;: &quot;/movies/pulp-fiction.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 36,
+        &quot;time&quot;: &quot;2025-01-14 12:40&quot;,
+        &quot;available_seats&quot;: 88,
+        &quot;movie_id&quot;: 9,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;Jaws&quot;,
+            &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;is&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 19,
+        &quot;time&quot;: &quot;2025-01-21 19:13&quot;,
+        &quot;available_seats&quot;: 11,
+        &quot;movie_id&quot;: 3,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 3,
+            &quot;title&quot;: &quot;Back to the Future&quot;,
+            &quot;description&quot;: &quot;Sed veritatis similique sapiente non. Error in ullam quia. Laudantium molestiae quibusdam deserunt ullam. Ut nemo non expedita ut est sint possimus.&quot;,
+            &quot;age_restriction&quot;: 2,
+            &quot;language&quot;: &quot;lt&quot;,
+            &quot;cover_image&quot;: &quot;/movies/back-to-the-future.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 12,
+        &quot;time&quot;: &quot;2025-01-22 19:57&quot;,
+        &quot;available_seats&quot;: 52,
+        &quot;movie_id&quot;: 1,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Aladdin&quot;,
+            &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;ar&quot;,
+            &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 34,
+        &quot;time&quot;: &quot;2025-02-14 23:07&quot;,
+        &quot;available_seats&quot;: 29,
+        &quot;movie_id&quot;: 10,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 10,
+            &quot;title&quot;: &quot;Joker&quot;,
+            &quot;description&quot;: &quot;Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.&quot;,
+            &quot;age_restriction&quot;: 0,
+            &quot;language&quot;: &quot;sa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/joker.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 11,
+        &quot;time&quot;: &quot;2025-02-17 18:56&quot;,
+        &quot;available_seats&quot;: 26,
+        &quot;movie_id&quot;: 17,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 17,
+            &quot;title&quot;: &quot;The Shining&quot;,
+            &quot;description&quot;: &quot;Sit aliquid unde quo aut numquam molestias eos. Omnis et quia ad. Nihil provident delectus laborum enim. Laboriosam impedit quia qui.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;pl&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-shining.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 15,
+        &quot;time&quot;: &quot;2025-02-22 03:47&quot;,
+        &quot;available_seats&quot;: 33,
+        &quot;movie_id&quot;: 1,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Aladdin&quot;,
+            &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;ar&quot;,
+            &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 25,
+        &quot;time&quot;: &quot;2025-03-03 10:52&quot;,
+        &quot;available_seats&quot;: 48,
+        &quot;movie_id&quot;: 8,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Interstellar&quot;,
+            &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;wa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 27,
+        &quot;time&quot;: &quot;2025-03-04 10:12&quot;,
+        &quot;available_seats&quot;: 11,
+        &quot;movie_id&quot;: 10,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 10,
+            &quot;title&quot;: &quot;Joker&quot;,
+            &quot;description&quot;: &quot;Nam soluta distinctio occaecati et. Sed qui a quisquam explicabo adipisci omnis dolores. Perspiciatis ea ab laudantium consequatur totam. Sit minima fugit eos et recusandae consequatur.&quot;,
+            &quot;age_restriction&quot;: 0,
+            &quot;language&quot;: &quot;sa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/joker.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 26,
+        &quot;time&quot;: &quot;2025-03-06 09:46&quot;,
+        &quot;available_seats&quot;: 58,
+        &quot;movie_id&quot;: 18,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 18,
+            &quot;title&quot;: &quot;Titanic&quot;,
+            &quot;description&quot;: &quot;Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;zh&quot;,
+            &quot;cover_image&quot;: &quot;/movies/titanic.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 3,
+        &quot;time&quot;: &quot;2025-03-08 06:06&quot;,
+        &quot;available_seats&quot;: 88,
+        &quot;movie_id&quot;: 9,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;Jaws&quot;,
+            &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;is&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 4,
+        &quot;time&quot;: &quot;2025-03-09 18:56&quot;,
+        &quot;available_seats&quot;: 83,
+        &quot;movie_id&quot;: 18,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 18,
+            &quot;title&quot;: &quot;Titanic&quot;,
+            &quot;description&quot;: &quot;Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;zh&quot;,
+            &quot;cover_image&quot;: &quot;/movies/titanic.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 32,
+        &quot;time&quot;: &quot;2025-03-14 09:19&quot;,
+        &quot;available_seats&quot;: 94,
+        &quot;movie_id&quot;: 13,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;The Lord of the Rings&quot;,
+            &quot;description&quot;: &quot;Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;na&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-lord-of-the-rings.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 35,
+        &quot;time&quot;: &quot;2025-04-04 11:34&quot;,
+        &quot;available_seats&quot;: 6,
+        &quot;movie_id&quot;: 7,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 7,
+            &quot;title&quot;: &quot;Harry Potter&quot;,
+            &quot;description&quot;: &quot;Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.&quot;,
+            &quot;age_restriction&quot;: 5,
+            &quot;language&quot;: &quot;cr&quot;,
+            &quot;cover_image&quot;: &quot;/movies/harry-potter.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 16,
+        &quot;time&quot;: &quot;2025-04-06 16:24&quot;,
+        &quot;available_seats&quot;: 70,
+        &quot;movie_id&quot;: 1,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Aladdin&quot;,
+            &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;ar&quot;,
+            &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 23,
+        &quot;time&quot;: &quot;2025-04-07 03:48&quot;,
+        &quot;available_seats&quot;: 31,
+        &quot;movie_id&quot;: 13,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;The Lord of the Rings&quot;,
+            &quot;description&quot;: &quot;Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;na&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-lord-of-the-rings.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 46,
+        &quot;time&quot;: &quot;2025-04-23 07:53&quot;,
+        &quot;available_seats&quot;: 46,
+        &quot;movie_id&quot;: 8,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Interstellar&quot;,
+            &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;wa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 8,
+        &quot;time&quot;: &quot;2025-06-07 02:15&quot;,
+        &quot;available_seats&quot;: 75,
+        &quot;movie_id&quot;: 4,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 4,
+            &quot;title&quot;: &quot;Cars&quot;,
+            &quot;description&quot;: &quot;Ut illo eveniet sequi numquam beatae illo eos. Nobis saepe dicta ut. Voluptates nihil aliquam id. Reprehenderit deserunt aut et deleniti perferendis et.&quot;,
+            &quot;age_restriction&quot;: 11,
+            &quot;language&quot;: &quot;hi&quot;,
+            &quot;cover_image&quot;: &quot;/movies/cars.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 6,
+        &quot;time&quot;: &quot;2025-06-09 13:17&quot;,
+        &quot;available_seats&quot;: 45,
+        &quot;movie_id&quot;: 13,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;The Lord of the Rings&quot;,
+            &quot;description&quot;: &quot;Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;na&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-lord-of-the-rings.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 47,
+        &quot;time&quot;: &quot;2025-06-18 00:46&quot;,
+        &quot;available_seats&quot;: 79,
+        &quot;movie_id&quot;: 14,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 14,
+            &quot;title&quot;: &quot;The Matrix&quot;,
+            &quot;description&quot;: &quot;Minus exercitationem ut dolorum quisquam. Eum et officiis et quaerat deserunt maiores ut. At vero a modi eligendi enim voluptate.&quot;,
+            &quot;age_restriction&quot;: 12,
+            &quot;language&quot;: &quot;gu&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-matrix.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 49,
+        &quot;time&quot;: &quot;2025-06-22 20:49&quot;,
+        &quot;available_seats&quot;: 7,
+        &quot;movie_id&quot;: 7,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 7,
+            &quot;title&quot;: &quot;Harry Potter&quot;,
+            &quot;description&quot;: &quot;Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.&quot;,
+            &quot;age_restriction&quot;: 5,
+            &quot;language&quot;: &quot;cr&quot;,
+            &quot;cover_image&quot;: &quot;/movies/harry-potter.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 17,
+        &quot;time&quot;: &quot;2025-06-25 05:53&quot;,
+        &quot;available_seats&quot;: 42,
+        &quot;movie_id&quot;: 9,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;Jaws&quot;,
+            &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;is&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 1,
+        &quot;time&quot;: &quot;2025-06-25 08:43&quot;,
+        &quot;available_seats&quot;: 5,
+        &quot;movie_id&quot;: 8,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Interstellar&quot;,
+            &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;wa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 48,
+        &quot;time&quot;: &quot;2025-06-29 06:27&quot;,
+        &quot;available_seats&quot;: 87,
+        &quot;movie_id&quot;: 9,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 9,
+            &quot;title&quot;: &quot;Jaws&quot;,
+            &quot;description&quot;: &quot;Laboriosam quia sint aliquam veritatis. Enim at iure natus autem. Aperiam architecto esse eum iure.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;is&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jaws.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 13,
+        &quot;time&quot;: &quot;2025-07-05 16:14&quot;,
+        &quot;available_seats&quot;: 6,
+        &quot;movie_id&quot;: 7,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 7,
+            &quot;title&quot;: &quot;Harry Potter&quot;,
+            &quot;description&quot;: &quot;Numquam sequi quam incidunt esse consequatur consequatur officia excepturi. Quisquam et voluptatem facilis aspernatur qui placeat aut dicta. Reprehenderit deleniti qui accusamus sed. Culpa sed culpa omnis aspernatur.&quot;,
+            &quot;age_restriction&quot;: 5,
+            &quot;language&quot;: &quot;cr&quot;,
+            &quot;cover_image&quot;: &quot;/movies/harry-potter.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 21,
+        &quot;time&quot;: &quot;2025-07-11 20:36&quot;,
+        &quot;available_seats&quot;: 41,
+        &quot;movie_id&quot;: 8,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Interstellar&quot;,
+            &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;wa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 38,
+        &quot;time&quot;: &quot;2025-07-15 21:03&quot;,
+        &quot;available_seats&quot;: 85,
+        &quot;movie_id&quot;: 1,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Aladdin&quot;,
+            &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;ar&quot;,
+            &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 33,
+        &quot;time&quot;: &quot;2025-07-25 17:36&quot;,
+        &quot;available_seats&quot;: 84,
+        &quot;movie_id&quot;: 18,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 18,
+            &quot;title&quot;: &quot;Titanic&quot;,
+            &quot;description&quot;: &quot;Necessitatibus temporibus quasi assumenda. Ex architecto in repellat quia. Blanditiis quo laborum neque aliquam.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;zh&quot;,
+            &quot;cover_image&quot;: &quot;/movies/titanic.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 14,
+        &quot;time&quot;: &quot;2025-07-30 03:50&quot;,
+        &quot;available_seats&quot;: 6,
+        &quot;movie_id&quot;: 1,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;Aladdin&quot;,
+            &quot;description&quot;: &quot;Repellat accusamus vel nesciunt magnam quaerat omnis. Et ex officiis qui molestiae sint sint ut. Beatae eum magnam eos praesentium dolores. Aut veniam qui placeat hic.&quot;,
+            &quot;age_restriction&quot;: 10,
+            &quot;language&quot;: &quot;ar&quot;,
+            &quot;cover_image&quot;: &quot;/movies/aladdin.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 44,
+        &quot;time&quot;: &quot;2025-07-30 15:40&quot;,
+        &quot;available_seats&quot;: 15,
+        &quot;movie_id&quot;: 8,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 8,
+            &quot;title&quot;: &quot;Interstellar&quot;,
+            &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+            &quot;age_restriction&quot;: 4,
+            &quot;language&quot;: &quot;wa&quot;,
+            &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;time&quot;: &quot;2025-08-12 16:29&quot;,
+        &quot;available_seats&quot;: 67,
+        &quot;movie_id&quot;: 12,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 12,
+            &quot;title&quot;: &quot;Jurassic Park&quot;,
+            &quot;description&quot;: &quot;Suscipit modi sint sint eos porro. Et sed illo natus delectus voluptas. Ut rerum animi magni commodi amet est. Voluptas et non quia recusandae.&quot;,
+            &quot;age_restriction&quot;: 3,
+            &quot;language&quot;: &quot;vo&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jurassic-park.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 5,
+        &quot;time&quot;: &quot;2025-09-02 23:28&quot;,
+        &quot;available_seats&quot;: 21,
+        &quot;movie_id&quot;: 15,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 15,
+            &quot;title&quot;: &quot;Pulp Fiction&quot;,
+            &quot;description&quot;: &quot;Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;se&quot;,
+            &quot;cover_image&quot;: &quot;/movies/pulp-fiction.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 42,
+        &quot;time&quot;: &quot;2025-09-03 00:10&quot;,
+        &quot;available_seats&quot;: 45,
+        &quot;movie_id&quot;: 2,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 2,
+            &quot;title&quot;: &quot;Avengers&quot;,
+            &quot;description&quot;: &quot;Eligendi dolores labore natus asperiores id repellendus qui. Sit dolores voluptatibus enim repellat aut. Saepe veniam eligendi consequuntur et reiciendis esse eum.&quot;,
+            &quot;age_restriction&quot;: 12,
+            &quot;language&quot;: &quot;es&quot;,
+            &quot;cover_image&quot;: &quot;/movies/avengers.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 22,
+        &quot;time&quot;: &quot;2025-09-04 14:13&quot;,
+        &quot;available_seats&quot;: 31,
+        &quot;movie_id&quot;: 11,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 11,
+            &quot;title&quot;: &quot;Jumanji&quot;,
+            &quot;description&quot;: &quot;Veritatis quis voluptatum culpa temporibus omnis quas voluptatum. Quia non dolorum esse eius assumenda necessitatibus vero. Dolor explicabo facere similique similique.&quot;,
+            &quot;age_restriction&quot;: 6,
+            &quot;language&quot;: &quot;ee&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jumanji.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 29,
+        &quot;time&quot;: &quot;2025-09-05 12:11&quot;,
+        &quot;available_seats&quot;: 93,
+        &quot;movie_id&quot;: 16,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 16,
+            &quot;title&quot;: &quot;Star Wars&quot;,
+            &quot;description&quot;: &quot;Dolorum officiis eaque sit. Eum et in et eius alias. Odio provident earum exercitationem rerum eum nihil.&quot;,
+            &quot;age_restriction&quot;: 11,
+            &quot;language&quot;: &quot;ch&quot;,
+            &quot;cover_image&quot;: &quot;/movies/star-wars.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 39,
+        &quot;time&quot;: &quot;2025-09-22 14:35&quot;,
+        &quot;available_seats&quot;: 100,
+        &quot;movie_id&quot;: 11,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 11,
+            &quot;title&quot;: &quot;Jumanji&quot;,
+            &quot;description&quot;: &quot;Veritatis quis voluptatum culpa temporibus omnis quas voluptatum. Quia non dolorum esse eius assumenda necessitatibus vero. Dolor explicabo facere similique similique.&quot;,
+            &quot;age_restriction&quot;: 6,
+            &quot;language&quot;: &quot;ee&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jumanji.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 37,
+        &quot;time&quot;: &quot;2025-09-28 03:00&quot;,
+        &quot;available_seats&quot;: 5,
+        &quot;movie_id&quot;: 15,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 15,
+            &quot;title&quot;: &quot;Pulp Fiction&quot;,
+            &quot;description&quot;: &quot;Qui sed dolores ad in qui quis quia. Sed et autem quisquam eius ipsum. Nostrum laudantium esse voluptatum quae ducimus.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;se&quot;,
+            &quot;cover_image&quot;: &quot;/movies/pulp-fiction.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 28,
+        &quot;time&quot;: &quot;2025-10-04 02:02&quot;,
+        &quot;available_seats&quot;: 11,
+        &quot;movie_id&quot;: 12,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 12,
+            &quot;title&quot;: &quot;Jurassic Park&quot;,
+            &quot;description&quot;: &quot;Suscipit modi sint sint eos porro. Et sed illo natus delectus voluptas. Ut rerum animi magni commodi amet est. Voluptas et non quia recusandae.&quot;,
+            &quot;age_restriction&quot;: 3,
+            &quot;language&quot;: &quot;vo&quot;,
+            &quot;cover_image&quot;: &quot;/movies/jurassic-park.jpg&quot;
+        }
+    },
+    {
+        &quot;id&quot;: 31,
+        &quot;time&quot;: &quot;2025-10-07 18:56&quot;,
+        &quot;available_seats&quot;: 3,
+        &quot;movie_id&quot;: 13,
+        &quot;movie&quot;: {
+            &quot;id&quot;: 13,
+            &quot;title&quot;: &quot;The Lord of the Rings&quot;,
+            &quot;description&quot;: &quot;Explicabo modi similique itaque corrupti cum et totam. Recusandae facilis incidunt sed consequatur. Repellat eligendi et facere consequatur voluptatem voluptatem ut dolor. Exercitationem atque doloribus impedit autem voluptatum.&quot;,
+            &quot;age_restriction&quot;: 18,
+            &quot;language&quot;: &quot;na&quot;,
+            &quot;cover_image&quot;: &quot;/movies/the-lord-of-the-rings.jpg&quot;
+        }
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-screening-event" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-screening-event"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-screening-event"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-screening-event" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-screening-event">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-screening-event" data-method="GET"
+      data-path="api/screening-event"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-screening-event', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-screening-event"
+                    onclick="tryItOut('GETapi-screening-event');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-screening-event"
+                    onclick="cancelTryOut('GETapi-screening-event');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-screening-event"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/screening-event</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-screening-event"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-screening-event"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-screening-event">Store a newly created resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-screening-event">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/screening-event" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"time\": \"2024-10-15T21:14:49\",
+    \"available_seats\": 1,
+    \"movie_id\": 7
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/screening-event"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "time": "2024-10-15T21:14:49",
+    "available_seats": 1,
+    "movie_id": 7
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-screening-event">
+</span>
+<span id="execution-results-POSTapi-screening-event" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-screening-event"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-screening-event"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-screening-event" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-screening-event">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-screening-event" data-method="POST"
+      data-path="api/screening-event"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-screening-event', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-screening-event"
+                    onclick="tryItOut('POSTapi-screening-event');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-screening-event"
+                    onclick="cancelTryOut('POSTapi-screening-event');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-screening-event"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/screening-event</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-screening-event"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-screening-event"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="time"                data-endpoint="POSTapi-screening-event"
+               value="2024-10-15T21:14:49"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2024-10-15T21:14:49</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>available_seats</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="available_seats"                data-endpoint="POSTapi-screening-event"
+               value="1"
+               data-component="body">
+    <br>
+<p>Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movie_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="movie_id"                data-endpoint="POSTapi-screening-event"
+               value="7"
+               data-component="body">
+    <br>
+<p>Example: <code>7</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-screening-event--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-screening-event--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/screening-event/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/screening-event/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-screening-event--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;time&quot;: &quot;2025-06-25 08:43&quot;,
+    &quot;available_seats&quot;: 5,
+    &quot;movie_id&quot;: 8,
+    &quot;movie&quot;: {
+        &quot;id&quot;: 8,
+        &quot;title&quot;: &quot;Interstellar&quot;,
+        &quot;description&quot;: &quot;Excepturi est aperiam quisquam possimus voluptatem. Reprehenderit recusandae quidem ut voluptate. Dolor est tenetur sint rerum odit architecto necessitatibus.&quot;,
+        &quot;age_restriction&quot;: 4,
+        &quot;language&quot;: &quot;wa&quot;,
+        &quot;cover_image&quot;: &quot;/movies/interstellar.jpg&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-screening-event--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-screening-event--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-screening-event--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-screening-event--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-screening-event--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-screening-event--id-" data-method="GET"
+      data-path="api/screening-event/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-screening-event--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-screening-event--id-"
+                    onclick="tryItOut('GETapi-screening-event--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-screening-event--id-"
+                    onclick="cancelTryOut('GETapi-screening-event--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-screening-event--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/screening-event/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-screening-event--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-screening-event--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-screening-event--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the screening event. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-screening-event--id-">Update the specified resource in storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-screening-event--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/screening-event/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"time\": \"2024-10-15T21:14:49\",
+    \"available_seats\": 5,
+    \"movie_id\": 3
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/screening-event/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "time": "2024-10-15T21:14:49",
+    "available_seats": 5,
+    "movie_id": 3
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-screening-event--id-">
+</span>
+<span id="execution-results-PUTapi-screening-event--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-screening-event--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-screening-event--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-screening-event--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-screening-event--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-screening-event--id-" data-method="PUT"
+      data-path="api/screening-event/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-screening-event--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-screening-event--id-"
+                    onclick="tryItOut('PUTapi-screening-event--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-screening-event--id-"
+                    onclick="cancelTryOut('PUTapi-screening-event--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-screening-event--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/screening-event/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/screening-event/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-screening-event--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-screening-event--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-screening-event--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the screening event. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>time</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="time"                data-endpoint="PUTapi-screening-event--id-"
+               value="2024-10-15T21:14:49"
+               data-component="body">
+    <br>
+<p>Must be a valid date. Example: <code>2024-10-15T21:14:49</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>available_seats</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="available_seats"                data-endpoint="PUTapi-screening-event--id-"
+               value="5"
+               data-component="body">
+    <br>
+<p>Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>movie_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="movie_id"                data-endpoint="PUTapi-screening-event--id-"
+               value="3"
+               data-component="body">
+    <br>
+<p>Example: <code>3</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-screening-event--id-">Remove the specified resource from storage.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-screening-event--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/screening-event/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/screening-event/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-screening-event--id-">
+</span>
+<span id="execution-results-DELETEapi-screening-event--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-screening-event--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-screening-event--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-screening-event--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-screening-event--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-screening-event--id-" data-method="DELETE"
+      data-path="api/screening-event/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-screening-event--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-screening-event--id-"
+                    onclick="tryItOut('DELETEapi-screening-event--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-screening-event--id-"
+                    onclick="cancelTryOut('DELETEapi-screening-event--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-screening-event--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/screening-event/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-screening-event--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-screening-event--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-screening-event--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the screening event. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>
