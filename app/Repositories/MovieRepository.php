@@ -22,7 +22,7 @@ class MovieRepository
     public function create(array $data): Movie
     {
         if (isset($data['cover_image']) && $data['cover_image'] instanceof \Illuminate\Http\UploadedFile) {
-            $data['cover_image'] = $data['cover_image']->store('movies');
+            $data['cover_image'] = $data['cover_image']->store('movies', ['public']);
         }
 
         return Movie::create($data);
@@ -33,7 +33,7 @@ class MovieRepository
         $movie = Movie::findOrFail($id);
 
         if (isset($data['cover_image']) && $data['cover_image'] instanceof \Illuminate\Http\UploadedFile) {
-            $data['cover_image'] = $data['cover_image']->store('movies');
+            $data['cover_image'] = $data['cover_image']->store('movies', ['public']);
         }
 
         $movie->update($data);

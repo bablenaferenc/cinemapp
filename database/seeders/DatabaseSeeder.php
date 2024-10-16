@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Movie;
 use App\Models\ScreeningEvent;
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -16,11 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $movies = [
             'Aladdin',
             'Avengers',
@@ -43,9 +37,16 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($movies as $movie) {
+            $imageFileName = Str::slug($movie) . '.jpg';
+
+            $imagePath = database_path('seeders/images/' . $imageFileName);
+            $targetPath = 'movies/' . $imageFileName;
+
+            Storage::disk('public')->put($targetPath, file_get_contents($imagePath));
+
             Movie::factory()->create([
                 'title' => $movie,
-                'cover_image' => '/movies/' . Str::slug($movie) . '.jpg',
+                'cover_image' => '/movies/' . $imageFileName,
             ]);
         }
 
